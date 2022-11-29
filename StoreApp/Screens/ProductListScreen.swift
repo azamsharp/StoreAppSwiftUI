@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductListScreen: View {
     
     let category: Category
+    @State private var isPresented: Bool = false
     @EnvironmentObject private var storeModel: StoreModel
     
     var body: some View {
@@ -24,6 +25,17 @@ struct ProductListScreen: View {
                 print(error)
             }
         }.navigationTitle(category.name)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Add Product") {
+                        isPresented = true
+                    }
+                }
+            }.sheet(isPresented: $isPresented) {
+                NavigationStack {
+                    AddProductScreen()
+                }
+            }
     }
 }
 

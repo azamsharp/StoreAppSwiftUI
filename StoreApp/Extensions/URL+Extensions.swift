@@ -25,6 +25,10 @@ extension URL {
         #endif
     }
     
+    static var saveProduct: URL {
+        return URL(string: "/api/v1/products/", relativeTo: Self.default)!
+    }
+    
     static var allCategories: URL {
         URL(string: "/api/v1/categories", relativeTo: Self.default)!
     }
