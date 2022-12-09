@@ -19,11 +19,7 @@ struct ProductCellView: View {
                 Spacer()
                 
                 Text(product.price, format: .currency(code: Locale.currencyCode))
-                    .padding(5)
-                    .foregroundColor(.white)
-                    .background {
-                        Color.green
-                    } .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                    .borderedCaption()
                     
             }
             Text(product.description)

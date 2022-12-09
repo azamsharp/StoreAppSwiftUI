@@ -15,8 +15,13 @@ struct ProductListScreen: View {
     
     var body: some View {
         List(storeModel.products, id: \.id) { product in
-            ProductCellView(product: product)
+            NavigationLink(value: product) {
+                ProductCellView(product: product)
+            }
         }
+        .navigationDestination(for: Product.self, destination: { product in
+            ProductDetailScreen(product: product)
+        })
         .listStyle(.plain)
         .task {
             do {
